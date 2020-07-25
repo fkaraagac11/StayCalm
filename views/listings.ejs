@@ -1,0 +1,39 @@
+<%- include('partials/header') %>
+
+<div class="container">
+    <header class="jumbotron">
+        <div class="container">
+            <h1>WELCOME TO STAYCALM</h1>
+            <p>
+                View our listings from all over the USA!!!
+            </p>
+            <p>
+                <a class="btn btn-primary btn-large" href="/campgrounds/new">
+                    Add New listings</a
+                >
+            </p>
+        </div>
+    </header>
+
+    <div class="row text-center" style="display: flex; flex-wrap: wrap;">
+        <% listings.forEach(function(listing){ %>
+
+        <div class="col-md-3 col-sm-12">
+            <div class="thumbnail">
+                <img
+                    src="<%= campground.image %>"
+                    width="800"
+                    height="600"
+                    alt="<%= campground.name%>"
+                />
+                <div>
+                    <h3 class="caption"><%= campground.name %></h3>
+                </div>
+                <hr />
+            </div>
+        </div>
+        <% }); %>
+    </div>
+</div>
+
+<%- include('partials/footer') %>
