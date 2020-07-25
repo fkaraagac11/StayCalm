@@ -1,6 +1,9 @@
 const express = require("express");
 const app = express();
 const connectDB = require("./models/connection");
+const List = require("./models/List");
+
+connectDB();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
