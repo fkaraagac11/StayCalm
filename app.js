@@ -37,8 +37,10 @@ app.post("/listings", (req, res) => {
     var state = req.body.state;
     var zip = req.body.zip;
     var newListing = {
-        email: email,
-        password: password,
+        name: name,
+        middleName: middleName,
+        lastName: lastName,
+        houseType: houseType,
         address: address,
         address2: address2,
         city: city,
