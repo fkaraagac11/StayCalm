@@ -29,10 +29,11 @@ app.get("/listings", (req, res) => {
 });
 
 app.post("/listings", (req, res) => {
-    var email = req.body.email;
-    var password = req.body.password;
+    var name = req.body.name;
+    var middleName = req.body.middleName;
+    var lastName = req.body.lastName;
+    var houseType = req.body.houseType;
     var address = req.body.address;
-    var address2 = req.body.address2;
     var city = req.body.city;
     var state = req.body.state;
     var zip = req.body.zip;
@@ -42,11 +43,11 @@ app.post("/listings", (req, res) => {
         lastName: lastName,
         houseType: houseType,
         address: address,
-        address2: address2,
         city: city,
         state: state,
         zip: zip,
     };
+
     List.create(newListing, (err, newlyCreated) => {
         if (err) {
             console.log(err);
