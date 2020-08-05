@@ -27,7 +27,7 @@ app.get("/listings", (req, res) => {
 //2- NEW => '/listings/new' => GET for showing new list form
 app.get("/listings/new", (req, res) => {
     //GET all lists from DB
-    List.find({}, function (err, lists) {
+    List.find({}, (err, lists) => {
         if (err) {
             console.log(err);
         } else {
