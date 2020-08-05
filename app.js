@@ -9,28 +9,49 @@ connectDB();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 
-app.get("/staycalm", (req, res) => {
-    res.send("StayCalm Project Server started");
-});
-
 app.get("/", (req, res) => {
     res.render("landing");
 });
+//1-INDEX => '/listings' => GET for listing all listings
 
 app.get("/listings", (req, res) => {
-    //GET all lists from DB
-    List.find({}, (err, allLists) => {
+    List.find({}, (err, lists) => {
         if (err) {
-            console.log(err);
+            console.log("ERROR!!");
         } else {
-            res.render("listings", { listings: allLists });
+            res.render("listings", { lists: lists });
         }
     });
 });
 
+//2- NEW => '/listings/new' => GET for showing new list form
+app.get("/listings/new", (req, res) => {
+    //GET all lists from DB
+    List.find({}, function (err, lists) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.render("new", { lists: lists });
+        }
+    });
+});
+
+//3- CREATE => '/listings' => POST for creating new list then redirect somewhere
+app.post("/listings", (req, res) => {
+    //Create list
+    List.create(req.body.list, (err, newListing) => {
+        if (err) {
+            res.render("new");
+        } else {
+            //then redirect
+            res.redirect("/listings");
+        }
+    });
+});
+
+/*
 app.post("/listings", (req, res) => {
     var name = req.body.name;
-    var middleName = req.body.middleName;
     var lastName = req.body.lastName;
     var houseType = req.body.houseType;
     var address = req.body.address;
@@ -39,7 +60,6 @@ app.post("/listings", (req, res) => {
     var zip = req.body.zip;
     var newListing = {
         name: name,
-        middleName: middleName,
         lastName: lastName,
         houseType: houseType,
         address: address,
@@ -47,19 +67,7 @@ app.post("/listings", (req, res) => {
         state: state,
         zip: zip,
     };
-
-    List.create(newListing, (err, newlyCreated) => {
-        if (err) {
-            console.log(err);
-        } else {
-            res.redirect("/listings");
-        }
-    });
-});
-
-app.get("/listings/new", (req, res) => {
-    res.render("new.ejs");
-});
+    */
 
 app.listen(5555, () => {
     console.log("TO STAY CALM YOU NEED STAYCALM");

@@ -1,0 +1,13 @@
+* {
+    background-color: aquamarine;
+    font-size: large;
+    color: blueviolet;
+}
+
+.nav-link {
+    color: red;
+}
+
+.nav-link.disabled {
+    color: blueviolet;
+}

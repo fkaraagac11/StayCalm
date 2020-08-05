@@ -1,81 +1,69 @@
+<style>
+    * {
+        color: blueviolet;
+    }
+    .nav-link {
+        color: red;
+    }
+
+    .nav-link.disabled {
+        color: aqua;
+    }
+</style>
+
 <%- include('partials/header') %>
-<div class="container">
-    <div class="row">
-        <h1 style="text-align: center; margin: 25px;">
-            Create a new Campgrounds
-        </h1>
-        <div style="width: 30%; margin: 25px auto;">
-            <form action="/campgrounds" method="POST">
-                <div cl<form>
-                    <div class="form-row">
-                      <div class="form-group col-md-6">
-                        <label for="inputEmail4">Email</label>
-                        <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-                      </div>
-                      <div class="form-group col-md-6">
-                        <label for="inputPassword4">Password</label>
-                        <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="inputAddress">Address</label>
-                      <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-                    </div>
-                    <div class="form-group">
-                      <label for="inputAddress2">Address 2</label>
-                      <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-                    </div>
-                    <div class="form-row">
-                      <div class="form-group col-md-6">
-                        <label for="inputCity">City</label>
-                        <input type="text" class="form-control" id="inputCity">
-                      </div>
-                      <div class="form-group col-md-4">
-                        <label for="inputState">State</label>
-                        <select id="inputState" class="form-control">
-                          <option selected>Choose...</option>
-                          <option>...</option>
-                        </select>
-                      </div>
-                      <div class="form-group col-md-2">
-                        <label for="inputZip">Zip</label>
-                        <input type="text" class="form-control" id="inputZip">
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="gridCheck">
-                        <label class="form-check-label" for="gridCheck">
-                          Check me out
-                        </label>
-                      </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Sign in</button>
-                  </form>ass="form-group">
-                    <input
-                        class="form-control"
-                        type="text"
-                        name="name"
-                        placeholder="name"
-                    />
-                </div>
-                <div class="form-group">
-                    <input
-                        class="form-control"
-                        type="text"
-                        name="image"
-                        placeholder="image url"
-                    />
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-lg btn-primary btn-block">
-                        Submit!
-                    </button>
-                </div>
-                <a href="/listings">GO BACK</a>
-            </form>
+<h1 style="text-align: center; margin: 25px;">
+    Create a list for Housing
+</h1>
+
+<div class="ui main text container segment">
+    <div class="ui huge header">NEW LIST</div>
+    <form class="ui form" action="/listings" method="POST">
+        <div class="field">
+            <label>name</label>
+            <input type="text" name="list[name]" placeholder="name" />
+        </div>
+        <div class="field">
+            <label>LastName</label>
+            <input type="text" name="list[lastName]" placeholder="Last Name" />
+        </div>
+        <div class="field">
+            <label>HouseType</label>
+            <input
+                type="text"
+                name="list[houseType]"
+                placeholder="House Type"
+            />
+        </div>
+        <div class="field">
+            <label>Address</label>
+            <input type="text" name="list[address]" placeholder="Address" />
+        </div>
+        <div class="field">
+            <label>City</label>
+            <input type="text" name="list[city]" placeholder="city" />
+        </div>
+        <div class="field">
+            <label>State</label>
+            <input type="text" name="list[state]" placeholder="State" />
+        </div>
+        <div class="field">
+            <label>Zip</label>
+            <input type="text" name="list[zip]" placeholder="Zip" />
+        </div>
+        <div class="field">
+            <label>Image</label>
+            <input type="text" name="list[image]" placeholder="Image" />
         </div>
 
-        <hr />
-    </div>
+        <div class="field">
+            <label>Price</label>
+            <input type="text" name="list[price]" placeholder="Price per day" />
+        </div>
+
+        <input class="ui inverted big primary button" type="submit" />
+    </form>
 </div>
+
+<a href="/listings" style="text-align: center;">GO BACK</a>
+<%- include('partials/footer') %>

@@ -8,7 +8,7 @@
                 View our listings from all over the USA!!!
             </p>
             <p>
-                <a class="btn btn-primary btn-large" href="/campgrounds/new">
+                <a class="btn btn-primary btn-large" href="./listings/new">
                     Add New listings</a
                 >
             </p>
@@ -16,20 +16,25 @@
     </header>
 
     <div class="row text-center" style="display: flex; flex-wrap: wrap;">
-        <% listings.forEach(function(listing){ %>
+        <% lists.forEach(function(list){ %>
 
         <div class="col-md-3 col-sm-12">
             <div class="thumbnail">
                 <img
-                    src="<%= campground.image %>"
-                    width="800"
-                    height="600"
-                    alt="<%= campground.name%>"
+                    src="<%= list.image %>"
+                    width="400"
+                    height="300"
+                    alt="<%= list.name%>"
                 />
-                <div>
-                    <h3 class="caption"><%= campground.name %></h3>
-                </div>
-                <hr />
+                <p><%= list.name%></p>
+                <p><%= list.lastName%></p>
+                <p><%= list.houseType%></p>
+                <p><%= list.address%></p>
+                <p><%= list.city%></p>
+                <p><%= list.state%></p>
+                <p><%= list.zip%></p>
+                <p><% list.image%></p>
+                <p><%= list.price%>$</p>
             </div>
         </div>
         <% }); %>
