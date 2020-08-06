@@ -15,10 +15,52 @@
         </div>
     </header>
 
-    <div class="row text-center" style="display: flex; flex-wrap: wrap;">
+    <div class="container">
         <% lists.forEach(function(list){ %>
 
-        <div class="col-md-3 col-sm-12">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="thumbnail">
+                    <img
+                        class="img-responsive"
+                        src="<%= list.image %>"
+                        width="400"
+                        height="300"
+                        alt="<%= list.name%>"
+                    />
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="list-group">
+                    <h2>
+                        <%= list.houseType%> <br />
+                        owned by
+                        <strong><%= list.name%> <%= list.lastName%></strong>
+                    </h2>
+                    <h4>
+                        <strong> Location:</strong> <%= list.address%> <%=
+                        list.city%> <%= list.state%> <%= list.zip%>
+                    </h4>
+
+                    <h2>
+                        $<%= list.price%> per day
+                    </h2>
+
+                    <p>
+                        <a class="btn btn-primary btn-large" href="#">
+                            Click for Details</a
+                        >
+                    </p>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <% }); %>
+    </div>
+
+    <!-- <div class="row text-center" style="display: flex; flex-wrap: wrap;">
+        <% lists.forEach(function(list){ %>
+        <div class="col-md-2 col-sm-12">
             <div class="thumbnail">
                 <img
                     src="<%= list.image %>"
@@ -37,8 +79,9 @@
                 <p><%= list.price%>$</p>
             </div>
         </div>
-        <% }); %>
-    </div>
-</div>
 
-<%- include('partials/footer') %>
+        <% }); %>
+    </div> -->
+
+    <%- include('partials/footer') %>
+</div>

@@ -1,27 +1,36 @@
+<%- include('partials/header') %>
+
 <head>
     <style>
-        #back-img {
+        body {
             background-image: url("https://media-cdn.tripadvisor.com/media/vr-splice-j/06/e4/73/d5.jpg");
+            background-color: #cccccc;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
     </style>
 </head>
 
-<%- include('partials/header') %>
-
-<header class="jumbotron">
-    <div class="container">
-        <h1>WELCOME TO STAYCALM LANDING PAGE</h1>
-        <p>
-            <a class="btn btn-primary btn-large" href="/listings/new">
-                Add New Stay</a
-            >
-        </p>
-    </div>
-</header>
+<!-- <header class="jumbotron"> -->
+<div class="container">
+    <h1 style="text-align: center;">WELCOME TO STAYCALM</h1>
+    <p style="text-align: center;">
+        <a class="btn btn-primary btn-large" href="/listings/new">
+            Please Click To Add a New Stay</a
+        >
+    </p>
+    <p style="text-align: center;">
+        <a class="btn btn-primary btn-large" href="#">
+            Please Click To Find a Cool Stay</a
+        >
+    </p>
+</div>
+<!-- </header> -->
 <div>
-    <img
-        id="back-img"
+    <!-- <img
+        id="backimage"
         src="https://media-cdn.tripadvisor.com/media/vr-splice-j/06/e4/73/d5.jpg"
         alt="mountain scene"
-    />
+    /> -->
 </div>

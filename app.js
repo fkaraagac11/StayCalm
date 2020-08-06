@@ -4,14 +4,25 @@ const connectDB = require("./models/connection");
 const List = require("./models/List");
 const bodyParser = require("body-parser");
 
-connectDB();
-
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
+
+//Warning: You have to put double backslash to fix the problem for defining path
+// app.use(
+//     express.static(
+//         "C:\\Users\\15713\\Documents\\Full-Stack\\EJS\\StayCalm\\public"
+//     )
+// );
+
+app.use(express.static(__dirname + "\\public"));
+console.log(__dirname);
+
+connectDB();
 
 app.get("/", (req, res) => {
     res.render("landing");
 });
+
 //1-INDEX => '/listings' => GET for listing all listings
 
 app.get("/listings", (req, res) => {
