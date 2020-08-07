@@ -13,10 +13,8 @@ app.set("view engine", "ejs");
 //         "C:\\Users\\15713\\Documents\\Full-Stack\\EJS\\StayCalm\\public"
 //     )
 // );
-
-app.use(express.static(__dirname + "\\public"));
+app.use(express.static(__dirname + "/public"));
 console.log(__dirname);
-
 connectDB();
 
 app.get("/", (req, res) => {
