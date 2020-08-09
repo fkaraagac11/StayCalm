@@ -14,7 +14,6 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
     require("express-session")({
-        secret: "the world",
         resave: false,
         saveUninitialized: false,
     })
@@ -53,6 +52,68 @@ app.get("/", (req, res) => {
     res.render("landing");
 });
 
+//**********SIGNIN, LOGIN and LOGOUT implementation
+
+app.get("/valuedUser", isLoggedIn, function (req, res) {
+    res.render("valued_user");
+});
+
+// Show signup form
+app.get("/register", (req, res) => {
+    res.render("register");
+});
+
+// Handling user sign-up
+app.post("/register", (req, res) => {
+    User.register(
+        new User({ username: req.body.username }),
+        req.body.password,
+        function (err, user) {
+            if (err) {
+                console.log(err);
+                return res.render("register");
+                // console.log("You are already registered");
+            }
+            passport.authenticate("local")(req, res, function () {
+                res.redirect("/valuedUser");
+            });
+        }
+    );
+});
+
+// LOGIN ROUTES
+// Render Login Form
+
+app.get("/login", (req, res) => {
+    res.render("login");
+});
+
+// Login logic
+//middleware
+
+app.post(
+    "/login",
+    passport.authenticate("local", {
+        successRedirect: "/valueduser",
+        failureRedirect: "/login",
+    }),
+    function (req, res) {}
+);
+
+// LOGOUT function
+
+app.get("/logout", (req, res) => {
+    req.logout();
+    res.redirect("/");
+});
+
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect("/login");
+}
+
 //1-INDEX => '/listings' => GET for listing all listings
 
 app.get("/listings", (req, res) => {
@@ -79,86 +140,6 @@ app.get("/listings/new", (req, res) => {
 });
 
 // //3- CREATE => '/listings' => POST for creating new list then redirect somewhere
-// app.post("/listings", (req, res) => {
-//     //Create list
-//     console.log(req.body);
-//     List.create(req.body.list, (err, newListing) => {
-//         if (err) {
-//             console.log(err);
-//             res.render("new");
-//         } else {
-//             //then redirect
-//             res.redirect("/listings");
-//         }
-//     });
-// });
-
-//SIGNIN, LOGIN and LOGOUT implementation
-
-app.get("/listings/new", isLoggedIn, function (req, res) {
-    res.render("new");
-});
-
-
-
-// Show signup form
-app.get("/register", (req, res) => {
-    res.render("register");
-});
-
-// Handling user sign-up
-app.post("/register", (req, res) => {
-    User.register(
-        new User({ username: req.body.username }),
-        req.body.password,
-        function (err, user) {
-            if (err) {
-                console.log(err);
-                return res.render("register");
-            }
-            passport.authenticate("local")(req, res, function () {
-                res.redirect("/listings/new");
-            });
-        }
-    );
-});
-
-// LOGIN ROUTES
-// Render Login Form
-
-app.get("/login", (req, res) => {
-    res.render("login");
-});
-
-// Login logic
-//middleware
-
-app.post(
-    "/login",
-    passport.authenticate("local", {
-        successRedirect: "/listings/new",
-        failureRedirect: "/login",
-    }),
-    function (req, res) {}
-);
-
-// LOGOUT function
-
-app.get("/logout", (req, res) => {
-    req.logout();
-    res.redirect("/");
-});
-
-function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) {
-        return next();
-    }
-    res.redirect("/login");
-}
-
-
-
-//3- CREATE => '/listings' => POST for creating new list then redirect somewhere
 app.post("/listings", (req, res) => {
     //Create list
     console.log(req.body);
@@ -172,8 +153,6 @@ app.post("/listings", (req, res) => {
         }
     });
 });
-
-
 
 /*
 app.post("/listings", (req, res) => {
