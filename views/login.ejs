@@ -1,11 +1,21 @@
-<h1>This is login page</h1>
+<%- include('partials/header') %>
 
-<form action="/login" method="POST">
-    <input type="text" name="username" placeholder="username" />
-    <input type="password" name="password" placeholder="password" />
-    <button>Login</button>
-</form>
+<div class="ui main text container segment">
+    <div class="ui huge header" style="text-align: center;">LOG-IN</div>
+    <form action="/login" class="ui form" method="POST">
+        <div class="field">
+            <label>Name</label>
+            <input type="text" name="username" placeholder="username" />
+        </div>
+        <div class="field">
+            <label>Password</label>
+            <input type="password" name="password" placeholder="password" />
+        </div>
 
-<li><a href="/register">Sign Up!</a></li>
-<li><a href="/login">Login!</a></li>
-<li><a href="/logout">Logout!</a></li>
+        <div>
+            <input class="ui inverted big primary button" type="submit" />
+
+            <strong> <a href="/register">Click for SIGN-UP!</a></strong>
+        </div>
+    </form>
+</div>
