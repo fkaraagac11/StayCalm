@@ -78,22 +78,28 @@ app.get("/listings/new", (req, res) => {
     });
 });
 
-//3- CREATE => '/listings' => POST for creating new list then redirect somewhere
-app.post("/listings", (req, res) => {
-    //Create list
-    console.log(req.body);
-    List.create(req.body.list, (err, newListing) => {
-        if (err) {
-            console.log(err);
-            res.render("new");
-        } else {
-            //then redirect
-            res.redirect("/listings");
-        }
-    });
-});
+// //3- CREATE => '/listings' => POST for creating new list then redirect somewhere
+// app.post("/listings", (req, res) => {
+//     //Create list
+//     console.log(req.body);
+//     List.create(req.body.list, (err, newListing) => {
+//         if (err) {
+//             console.log(err);
+//             res.render("new");
+//         } else {
+//             //then redirect
+//             res.redirect("/listings");
+//         }
+//     });
+// });
 
 //SIGNIN, LOGIN and LOGOUT implementation
+
+app.get("/listings/new", isLoggedIn, function (req, res) {
+    res.render("new");
+});
+
+
 
 // Show signup form
 app.get("/register", (req, res) => {
@@ -135,6 +141,39 @@ app.post(
     }),
     function (req, res) {}
 );
+
+// LOGOUT function
+
+app.get("/logout", (req, res) => {
+    req.logout();
+    res.redirect("/");
+});
+
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect("/login");
+}
+
+
+
+//3- CREATE => '/listings' => POST for creating new list then redirect somewhere
+app.post("/listings", (req, res) => {
+    //Create list
+    console.log(req.body);
+    List.create(req.body.list, (err, newListing) => {
+        if (err) {
+            console.log(err);
+            res.render("new");
+        } else {
+            //then redirect
+            res.redirect("/listings");
+        }
+    });
+});
+
+
 
 /*
 app.post("/listings", (req, res) => {
