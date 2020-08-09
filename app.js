@@ -1,12 +1,44 @@
 const express = require("express");
 const app = express();
+const mongoose = require("mongoose");
 const connectDB = require("./models/connection");
 const List = require("./models/List");
 const bodyParser = require("body-parser");
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
+const passportLocalMongoose = require("passport-local-mongoose");
+const User = require("./models/user");
 
-app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(
+    require("express-session")({
+        secret: "the world",
+        resave: false,
+        saveUninitialized: false,
+    })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+// used to serialize the user for the session
+passport.serializeUser(function (user, done) {
+    done(null, user.id);
+    // where is this user.id going? Are we supposed to access this anywhere?
+});
+
+// used to deserialize the user
+passport.deserializeUser(function (id, done) {
+    User.findById(id, function (err, user) {
+        done(err, user);
+    });
+});
 //Warning: You have to put double backslash to fix the problem for defining path
 // app.use(
 //     express.static(
@@ -40,6 +72,7 @@ app.get("/listings/new", (req, res) => {
         if (err) {
             console.log(err);
         } else {
+            console.log(lists);
             res.render("new", { lists: lists });
         }
     });
@@ -48,8 +81,10 @@ app.get("/listings/new", (req, res) => {
 //3- CREATE => '/listings' => POST for creating new list then redirect somewhere
 app.post("/listings", (req, res) => {
     //Create list
+    console.log(req.body);
     List.create(req.body.list, (err, newListing) => {
         if (err) {
+            console.log(err);
             res.render("new");
         } else {
             //then redirect
@@ -57,6 +92,49 @@ app.post("/listings", (req, res) => {
         }
     });
 });
+
+//SIGNIN, LOGIN and LOGOUT implementation
+
+// Show signup form
+app.get("/register", (req, res) => {
+    res.render("register");
+});
+
+// Handling user sign-up
+app.post("/register", (req, res) => {
+    User.register(
+        new User({ username: req.body.username }),
+        req.body.password,
+        function (err, user) {
+            if (err) {
+                console.log(err);
+                return res.render("register");
+            }
+            passport.authenticate("local")(req, res, function () {
+                res.redirect("/listings/new");
+            });
+        }
+    );
+});
+
+// LOGIN ROUTES
+// Render Login Form
+
+app.get("/login", (req, res) => {
+    res.render("login");
+});
+
+// Login logic
+//middleware
+
+app.post(
+    "/login",
+    passport.authenticate("local", {
+        successRedirect: "/listings/new",
+        failureRedirect: "/login",
+    }),
+    function (req, res) {}
+);
 
 /*
 app.post("/listings", (req, res) => {
