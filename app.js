@@ -53,6 +53,7 @@ app.get("/", (req, res) => {
     res.render("landing");
 });
 
+//*****************AUTHENTICATION********************/
 //**********SIGNIN, LOGIN and LOGOUT implementation
 
 app.get("/valuedUser", isLoggedIn, function (req, res) {
@@ -64,7 +65,7 @@ app.get("/register", (req, res) => {
     res.render("register");
 });
 
-// Handling user sign-up
+// Handling user sign-up functionality
 app.post("/register", (req, res) => {
     User.register(
         new User({ username: req.body.username }),
@@ -89,7 +90,7 @@ app.get("/login", (req, res) => {
     res.render("login");
 });
 
-// Login logic
+// Login functionality
 //middleware
 
 app.post(
@@ -101,13 +102,14 @@ app.post(
     function (req, res) {}
 );
 
-// LOGOUT function
+// LOGOUT functionality
 
 app.get("/logout", (req, res) => {
     req.logout();
     res.redirect("/");
 });
 
+//Middleware authentication
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
@@ -115,6 +117,7 @@ function isLoggedIn(req, res, next) {
     res.redirect("/login");
 }
 
+//****ROUTES*******/
 //1-INDEX => '/listings' => GET for listing all listings
 
 app.get("/listings", (req, res) => {
