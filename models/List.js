@@ -27,7 +27,14 @@ const listSchema = new mongoose.Schema({
 // listSchema SCHEMA is being compiled to List module
 const List = mongoose.model("List", listSchema);
 
-List.deleteOne({ name: "Fehmi" }, function (err) {});
+// Delete Listings
+// List.deleteMany({ name: "Fehmi" }, function (err) {
+//     console.log(err);
+// });
+
+// List.deleteOne({ name: "Fehmi" }, function (err) {
+//     console.log(err);
+// });
 
 //For detail info click the link https://mongoosejs.com/docs/subdocs.html
 //find() vs findOne() find hepsini digeri birini bulur

@@ -158,6 +158,18 @@ app.post("/listings", (req, res) => {
     });
 });
 
+// 4- SHOW => '/listings/:id => GET for showing info about one spesific listing
+
+app.get("/listings/:id", function (req, res) {
+    List.findById(req.params.id, function (err, foundList) {
+        if (err) {
+            res.redirect("/listings");
+        } else {
+            res.render("show", { list: foundList });
+        }
+    });
+});
+
 /*
 app.post("/listings", (req, res) => {
     var name = req.body.name;

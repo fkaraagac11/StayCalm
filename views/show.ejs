@@ -1,0 +1,23 @@
+<%- include('partials/header') %>
+
+<h2>
+    <%= list.houseType%> <br />
+    owned by
+    <strong><%= list.name%> <%= list.lastName%></strong>
+</h2>
+<h4>
+    <strong> Location:</strong> <%= list.address%> <%= list.city%> <%=
+    list.state%> <%= list.zip%>
+</h4>
+
+<h2>
+    $<%= list.price%> per day
+</h2>
+
+<h2>
+    <img src="<%= list.image%>" alt="" />
+</h2>
+
+<p>
+    <a class="btn btn-primary btn-large" href="#"> Click for Delete</a>
+</p>
