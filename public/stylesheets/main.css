@@ -5,3 +5,15 @@ body {
 #testing {
     color: black;
 }
+
+.wrapper {
+    background-color: lightskyblue;
+    display: grid;
+    grid-template-columns: 2fr 8fr 1fr 1fr 1fr;
+    grid-template-rows: 35px;
+    grid-column-gap: 20px;
+    align-items: center;
+}
+.logo {
+    justify-self: center;
+}
