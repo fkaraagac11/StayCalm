@@ -27,3 +27,15 @@ body {
     align-items: center;
     justify-content: center;
 }
+
+.flex-box {
+    display: flex;
+}
+
+.flex-box > div:nth-child(2) {
+    margin-left: auto;
+}
+
+.flex-box > div:nth-child(1) {
+    margin-left: initial;
+}
