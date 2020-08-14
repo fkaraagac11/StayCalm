@@ -30,6 +30,12 @@ body {
 
 .flex-box {
     display: flex;
+    flex-grow: initial;
+    flex-wrap: wrap;
+    flex-direction: row;
+    flex-shrink: initial;
+    flex-basis: content;
+    flex-flow: row;
 }
 
 .flex-box > div:nth-child(2) {
