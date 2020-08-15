@@ -26,7 +26,6 @@ const listSchema = new mongoose.Schema({
 
 // listSchema SCHEMA is being compiled to List module
 const List = mongoose.model("List", listSchema);
-
 // Delete Listings
 // List.deleteMany({ name: "Fehmi" }, function (err) {
 //     console.log(err);

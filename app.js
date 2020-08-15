@@ -117,6 +117,10 @@ function isLoggedIn(req, res, next) {
     res.redirect("/login");
 }
 
+// User.deleteOne({ username: "faruk11" }, function (err) {
+//     console.log(err);
+//     console.log("Hi");
+// });
 //****ROUTES*******/
 //1-INDEX => '/listings' => GET for listing all listings
 
