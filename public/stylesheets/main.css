@@ -1,9 +1,6 @@
 body {
     background-color: bisque;
-}
-
-#testing {
-    color: black;
+    min-height: 100%;
 }
 
 .wrapper {
@@ -20,12 +17,73 @@ body {
 }
 
 .container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     display: grid;
-    grid-template-rows: 3fr 1fr 1fr;
-
+    grid-template-rows: repeat(12, 1fr);
+    grid-template-rows: 80px 400px 80px;
     grid-row-gap: 1em;
-    align-items: center;
+    grid-column-gap: 1em;
+
+    grid-template-areas:
+        "h h h h h h h h h h h h"
+        "s c c c c c c c c c c c"
+        "f f f f f f f f f f f f";
     justify-content: center;
+    align-content: center;
+}
+
+.subheader {
+    display: grid;
+    background-color: red;
+    border-color: aqua;
+    font-size: 35px;
+    grid-row: 1/-1;
+    grid-area: h;
+    justify-content: stretch;
+}
+
+.content {
+    background-color: blue;
+    border-color: aqua;
+    font-size: 35px;
+    grid-column: 1/-1;
+    grid-area: c;
+    justify-content: stretch;
+}
+
+.sidebar {
+    background-color: red;
+    border-color: aqua;
+    font-size: 35px;
+    grid-column: 2/-1;
+    grid-area: s;
+    justify-content: stretch;
+}
+
+.footer {
+    background-color: blue;
+    border-color: aqua;
+    font-size: 35px;
+    /* grid-column: 2/-1; */
+    grid-area: f;
+    justify-content: stretch;
+}
+
+@media (max-width: 700px) {
+    .container {
+        grid-template-columns: 1fr;
+        grid-template-rows: 40px 400px 80px 40px;
+
+        grid-template-areas:
+            "h"
+            "c"
+            "s"
+            "f";
+    }
 }
 
 .flex-box {
