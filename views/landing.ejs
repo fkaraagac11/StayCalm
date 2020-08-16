@@ -1,45 +1,38 @@
-<%- include('partials/header') %>
+<html>
+    <%- include('partials/header') %>
 
-<head>
-    <style>
-        body {
-            /* background-image: url("https://media-cdn.tripadvisor.com/media/vr-splice-j/06/e4/73/d5.jpg");
-            background-image: url(""); */
-            background-image: url("StayCalm1.jpg.JPG");
-            background-color: #cccccc;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-    </style>
-</head>
-
-<!-- <header class="jumbotron"> -->
-<div class="container">
-    <div class="subheader"><p>SUBHEADER</p></div>
-    <div class="content">
-        <p>CONTENT</p>
-
-        <div>
-            <h1 id="testing" style="text-align: center;">
-                WELCOME TO STAYCALM
-            </h1>
+    <head>
+        <style>
+            body {
+                background-image: url("StayCalm1.jpg.JPG");
+                background-color: #cccccc;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="welcome">
+                <h1 id="testing" style="text-align: center;">
+                    WELCOME TO STAYCALM
+                </h1>
+            </div>
+            <div class="register">
+                <p style="text-align: center;">
+                    <a class="btn btn-primary btn-large" href="/register">
+                        Please Click To Register for Listing Your Stay</a
+                    >
+                </p>
+            </div>
+            <div class="searches">
+                <p style="text-align: center;">
+                    <a class="btn btn-primary btn-large" href="#">
+                        Please Click To Find a Cool Stay</a
+                    >
+                </p>
+            </div>
         </div>
-        <div>
-            <p style="text-align: center;">
-                <a class="btn btn-primary btn-large" href="/register">
-                    Please Click To Register for Listing Your Stay</a
-                >
-            </p>
-        </div>
-        <div>
-            <p style="text-align: center;">
-                <a class="btn btn-primary btn-large" href="#">
-                    Please Click To Find a Cool Stay</a
-                >
-            </p>
-        </div>
-    </div>
-    <div class="sidebar"><p>SIDEBAR</p></div>
-    <div class="footer"><p>FOOTER</p></div>
-</div>
+    </body>
+</html>
