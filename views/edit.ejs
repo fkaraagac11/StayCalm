@@ -2,10 +2,22 @@
 
 <div class="ui main text container segment">
     <div class="ui huge header" style="text-align: center;">EDIT LISTING</div>
-    <form action="/listings/<%=list._id%>" class="ui form" method="PUT">
+    <form
+        action="/listings/<%= list._id%>?_method=PUT"
+        class="ui form"
+        method="POST"
+    >
         <div class="field">
-            <label> <%= list.houseType%></label>
-            <input type="text" name="houseType" value="<%= list.houseType%>" />
+            <label>House Type</label>
+            <input
+                type="text"
+                name="list[houseType]"
+                value="<%= list.houseType%>"
+            />
+        </div>
+        <div class="field">
+            <label>Price</label>
+            <input type="text" name="list[price]" value="<%= list.price%>" />
         </div>
         <div class="field">
             <label> Image</label>
