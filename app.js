@@ -121,6 +121,7 @@ function isLoggedIn(req, res, next) {
 //     console.log(err);
 //     console.log("Hi");
 // });
+
 //****ROUTES*******/
 //1-INDEX => '/listings' => GET for listing all listings
 
@@ -170,6 +171,33 @@ app.get("/listings/:id", function (req, res) {
             res.redirect("/listings");
         } else {
             res.render("show", { list: foundList });
+        }
+    });
+});
+
+// 5- EDIT => '/listings/:id/edit' => GET for showing edit form for one list
+
+app.get("/listings/:id/edit", (req, res) => {
+    List.findById(req.params.id, (err, foundList) => {
+        if (err) {
+            res.redirect("/listings");
+        } else {
+            res.render("edit", { list: foundList });
+        }
+    });
+});
+
+// 6- UPDATE => '/listings/:id' => PUT for updating a particular list and redirect somewhere
+
+app.put("/listings/:id", (req, res) => {
+    List.findByIdAndUpdate(req.params.id, req.body.list, function (
+        err,
+        updatedList
+    ) {
+        if (err) {
+            res.redirect("/listings");
+        } else {
+            res.redirect("/listings/" + req.params.id);
         }
     });
 });

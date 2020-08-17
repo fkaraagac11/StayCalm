@@ -1,0 +1,30 @@
+<%- include('partials/header') %>
+
+<div class="ui main text container segment">
+    <div class="ui huge header" style="text-align: center;">EDIT LISTING</div>
+    <form action="/listings/:id" class="ui form" method="PUT">
+        <div class="field">
+            <label> <%= list.houseType%></label>
+            <input type="text" name="houseType" value="<%= list.houseType%>" />
+        </div>
+        <div class="field">
+            <label> Image</label>
+            <input type="text" name="list[image]" value="<%= list.image%>" />
+        </div>
+
+        <div class="field">
+            <label>Description</label>
+            <input
+                type="text"
+                name="list[description]"
+                placeholder="Description"
+            />
+        </div>
+
+        <div class="flex-box">
+            <div>
+                <input class="ui inverted big primary button" type="submit" />
+            </div>
+        </div>
+    </form>
+</div>

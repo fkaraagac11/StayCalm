@@ -16,6 +16,9 @@ const listSchema = new mongoose.Schema({
     //     },
     // ],
     houseType: String,
+    description: {
+        type: String,
+    },
     address: String,
     city: String,
     state: String,
@@ -26,6 +29,8 @@ const listSchema = new mongoose.Schema({
 
 // listSchema SCHEMA is being compiled to List module
 const List = mongoose.model("List", listSchema);
+module.exports = List;
+
 // Delete Listings
 // List.deleteMany({ name: "Fehmi" }, function (err) {
 //     console.log(err);
@@ -67,8 +72,6 @@ const List = mongoose.model("List", listSchema);
 //         console.log(x);
 //     }
 // });
-
-module.exports = List;
 
 /*
 app.post("/listings", (req, res) => {

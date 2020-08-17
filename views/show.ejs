@@ -18,8 +18,14 @@
     <img src="<%= list.image%>" alt="" />
 </h2>
 
+<h2>
+    DESCRIPTION: <%= list.description%>
+</h2>
+
 <p>
     <a class="btn btn-primary btn-large" href="#"> Click for Delete</a>
 
-    <a class="btn btn-primary btn-large" href="#"> Click for Edit</a>
+    <a class="btn btn-primary btn-large" href="/listings/<%=list.id%>/edit">
+        Click for Edit</a
+    >
 </p>
