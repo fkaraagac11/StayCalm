@@ -22,6 +22,7 @@ app.use(
     })
 );
 
+mongoose.set("useCreateIndex", true);
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -200,6 +201,18 @@ app.put("/listings/:id", (req, res) => {
             res.redirect("/listings");
         } else {
             res.redirect("/listings/" + req.params.id);
+        }
+    });
+});
+
+// 7-DELETE => 'listings/:id' for deleting a particular list then redirect somewhere
+
+app.delete("/listings/:id", (req, res) => {
+    List.findByIdAndRemove(req.params.id, function (err) {
+        if (err) {
+            res.redirect("/listings");
+        } else {
+            res.redirect("/listings");
         }
     });
 });

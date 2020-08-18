@@ -5,11 +5,14 @@
             <p>
                 View our listings from all over the USA!!!
             </p>
-            <p>
-                <a class="btn btn-primary btn-large" href="./listings/new">
-                    Add New listings</a
-                >
-            </p>
+          
+            <div>
+                <p>
+                    <a class="ui red basic button" href="/listings/new"
+                        > Add New listings</a
+                    >
+                </p>
+            </div>
         </div>
     </header>
 
@@ -35,7 +38,9 @@
                         owned by
                         <strong><%= list.name%> <%= list.lastName%></strong>
                     </h2>
-                    <p><strong>Description:</strong> <%= list.description %></p>
+                    <strong>
+                        <p>DESCRIPTION:
+                    </strong><%= list.description%></p>
                     <h4>
                         <strong> Location:</strong> <%= list.address%> <%=
                         list.city%> <%= list.state%> <%= list.zip%>

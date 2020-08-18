@@ -21,11 +21,26 @@
 <h2>
     DESCRIPTION: <%= list.description%>
 </h2>
-
-<p>
-    <a class="btn btn-primary btn-large" href="#"> Click for Delete</a>
-
-    <a class="btn btn-primary btn-large" href="/listings/<%=list.id%>/edit">
-        Click for Edit</a
-    >
-</p>
+<div class="buttons">
+    <div>
+        <p>
+            <a class="ui red basic button" href="/listings/">Lists</a>
+        </p>
+    </div>
+    <div>
+        <p>
+            <a class="ui red basic button" href="/listings/<%=list.id%>/edit"
+                >Edit</a
+            >
+        </p>
+    </div>
+    <div>
+        <form
+            id="delete"
+            action="/listings/<%=list._id%>?_method=DELETE"
+            method="POST"
+        >
+            <button class="ui red basic button">Delete</button>
+        </form>
+    </div>
+</div>
