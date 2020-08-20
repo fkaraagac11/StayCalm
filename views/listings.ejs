@@ -18,7 +18,6 @@
 
     <div class="container">
         <% lists.forEach(function(list){ %>
-
         <div class="row">
             <div class="col-md-5">
                 <div class="thumbnail">
@@ -45,11 +44,9 @@
                         <strong> Location:</strong> <%= list.address%> <%=
                         list.city%> <%= list.state%> <%= list.zip%>
                     </h4>
-
                     <h2>
                         $<%= list.price%> per day
                     </h2>
-
                     <p>
                         <a
                             class="btn btn-primary btn-large"
@@ -86,7 +83,6 @@
                 <p><%= list.price%>$</p>
             </div>
         </div>
-
         <% }); %>
     </div> -->
 
