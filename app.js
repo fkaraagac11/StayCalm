@@ -42,12 +42,7 @@ passport.deserializeUser(function (id, done) {
         done(err, user);
     });
 });
-//Warning: You have to put double backslash to fix the problem for defining path
-// app.use(
-//     express.static(
-//         "C:\\Users\\15713\\Documents\\Full-Stack\\EJS\\StayCalm\\public"
-//     )
-// );
+
 app.use(express.static(__dirname + "/public"));
 console.log(__dirname);
 connectDB();
@@ -268,4 +263,4 @@ app.listen(5555, () => {
 //         }
 //     }
 // );
-// This will be clear
+// This will be clearcd staycalm
